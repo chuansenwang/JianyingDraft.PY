@@ -487,3 +487,91 @@ def get_transition(guid: str = None, resource_id: str = "", name="", duration: i
         "resource_id": resource_id,
         "type": "transition"
     }
+
+
+def get_track_segments_frames():
+    return [
+        {
+            "id": tools.generate_id(),
+            "keyframe_list": [
+                {
+                    "curveType": "Line",
+                    "graphID": "",
+                    "id": tools.generate_id(),
+                    "left_control": {
+                        "x": 0,
+                        "y": 0
+                    },
+                    "right_control": {
+                        "x": 0,
+                        "y": 0
+                    },
+                    "time_offset": 0,
+                    "values": [
+                        0
+                    ]
+                },
+                {
+                    "curveType": "Line",
+                    "graphID": "",
+                    "id": tools.generate_id(),
+                    "left_control": {
+                        "x": 0,
+                        "y": 0
+                    },
+                    "right_control": {
+                        "x": 0,
+                        "y": 0
+                    },
+                    "time_offset": 5000000,
+                    "values": [
+                        0
+                    ]
+                }
+            ],
+            "material_id": "",
+            "property_type": "KFTypePositionX"
+        },
+        {
+            "id": tools.generate_id(),
+            "keyframe_list": [
+                {
+                    "curveType": "Line",
+                    "graphID": "",
+                    "id": tools.generate_id(),
+                    "left_control": {
+                        "x": 0,
+                        "y": 0
+                    },
+                    "right_control": {
+                        "x": 0,
+                        "y": 0
+                    },
+                    "time_offset": 0,
+                    "values": [
+                        0
+                    ]
+                },
+                {
+                    "curveType": "Line",
+                    "graphID": "",
+                    "id": tools.generate_id(),
+                    "left_control": {
+                        "x": 0,
+                        "y": 0
+                    },
+                    "right_control": {
+                        "x": 0,
+                        "y": 0
+                    },
+                    "time_offset": 5000000,
+                    "values": [
+                        0.9259259259259259
+                    ]
+                }
+            ],
+            "material_id": "",
+            "property_type": "KFTypePositionY"
+        }
+    ]
+

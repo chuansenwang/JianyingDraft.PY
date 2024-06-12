@@ -28,10 +28,13 @@ def basic_using():
     # 2. 添加背景音乐，音频长度会根据视频的长度自动剪截
     music_full_name = os.path.join(root_path, middle_path, "似是故人来.mp3")
     ## 2.1. 最简方式:直接添加音频文件的地址即可。
-    # draft.add_media(music_full_name)
+    draft.add_media(music_full_name)
     ## 2.2. 也可以给音频指定淡入淡出时长
-    draft.add_media(music_full_name, fade_in_duration=1_000_000, fade_out_duration=1_500_000)
+    # draft.add_media(music_full_name, fade_in_duration=1_000_000, fade_out_duration=1_500_000)
 
+    # 添加关键帧
+    common_keyframe_name = "位置"
+    draft.add_common_keyframes_tracks(common_keyframe_name, index=0, start=0)
     draft.save()
 
 
@@ -129,7 +132,7 @@ def make_images_with_animation():
 
 if __name__ == '__main__':
     ## 1. 最简方式（将图片做成视频）
-    # basic_using()
+    basic_using()
 
     ## 2.1 将既有视频进一步处理为新视频
     # make_videos()
@@ -138,7 +141,7 @@ if __name__ == '__main__':
     # make_video_with_speed()
 
     ## 2.3 将既有视频进一步处理为新视频（剪切开头部分）
-    make_video_with_cut()
+    # make_video_with_cut()
 
     ## 3. 新建带有特效的图片素材
     # make_images_with_effect()

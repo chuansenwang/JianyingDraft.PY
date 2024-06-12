@@ -264,3 +264,54 @@ class Draft:
                 pass
             pass
         pass
+
+    def add_common_keyframes_tracks(self, common_keyframe_name, index=0, **kwargs):
+        if '位置' == common_keyframe_name:
+            for i, segment in enumerate(self.__get_track_video_segments()):
+                j = i % 4
+                segment["clip"]["scale"] = {"x": 1.2, "y": 1.2}
+                time_range = segment["source_timerange"]
+                start = time_range['start']
+                duration = time_range['duration']
+                track_segments_frames: [] = template.get_track_segments_frames()
+                keyframe1, keyframe12 = track_segments_frames[0]['keyframe_list']
+
+                keyframe1["time_offset"] = start
+                keyframe12["time_offset"] = duration
+                if j == 0:
+
+                    keyframe12["values"] = [0.2]
+                    keyframe1, keyframe12 = track_segments_frames[1]['keyframe_list']
+                    keyframe1["time_offset"] = start
+                    keyframe12["time_offset"] = duration
+                    keyframe12["values"] = [0]
+                elif j == 1:
+                    keyframe12["values"] = [0]
+
+                    keyframe1, keyframe12 = track_segments_frames[1]['keyframe_list']
+                    keyframe1["time_offset"] = start
+                    keyframe12["time_offset"] = duration
+                    keyframe12["values"] = [0.2]
+
+                elif j == 2:
+                    keyframe12["values"] = [-0.2]
+
+                    keyframe1, keyframe12 = track_segments_frames[1]['keyframe_list']
+                    keyframe1["time_offset"] = start
+                    keyframe12["time_offset"] = duration
+                    keyframe12["values"] = [0]
+
+                elif j == 3:
+                    keyframe12["values"] = [0]
+
+                    keyframe1, keyframe12 = track_segments_frames[1]['keyframe_list']
+                    keyframe1["time_offset"] = start
+                    keyframe12["time_offset"] = duration
+                    keyframe12["values"] = [-0.2]
+
+                segment['common_keyframes'] = track_segments_frames
+
+        pass
+
+    def __get_track_video_segments(self):
+        return self._tracks_in_draft_content[0]["segments"]

@@ -182,7 +182,13 @@ class Media:
         # segment['X.material_type'] = self.material_type
 
         speed = self.kwargs.get("speed", 1.0)
+        scale = self.kwargs.get("scale", 1.0)
+
         segment['speed'] = speed  # 速度
+
+        # 放大缩小（默认等比缩放）
+        segment['scale'] = {"x": 1*scale, "y": 1*scale}
+
         start_in_media = self.kwargs.get("start_in_media", 0)
 
         segment['material_id'] = self.id
